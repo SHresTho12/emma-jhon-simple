@@ -3,15 +3,15 @@ import fakeData from '../../fakeData';
 import { getDatabaseCart, processOrder, removeFromDatabaseCart } from '../../utilities/databaseManager';
 import Reveiwitem from '../Reviewitem/Reveiwitem';
 import Cart from '../Cart/Cart'
+import { useHistory } from 'react-router-dom';
 const Review = () => 
 { 
     
     const [cart,setCart] = useState([]);
     const [orderPlaced,setorderPlaced]= useState(false);
-const placeorderhandel =()=>{
-    setCart([]);
-    setorderPlaced(true);
-    processOrder();
+    const history = useHistory()
+const proccedHandle =()=>{
+    history.push('/shipment');
 }
 let image;
 if(orderPlaced){
@@ -56,7 +56,7 @@ return products;
          <div className="cart_contaoiner">
             <h1>New cart</h1>
             <Cart cart={cart}>
-                <button className="main_button" onClick={placeorderhandel}>Place Order</button>
+                <button className="main_button" onClick={proccedHandle}>Procced Checkout</button>
             </Cart>
          </div>
         </div>
